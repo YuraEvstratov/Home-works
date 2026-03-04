@@ -3,6 +3,8 @@
 from turtle import *
 tracer(0)
 left(90)
+screensize(5000, 5000)
+setup(2000, 2000)
 k = 30
 for _ in range(4):
     forward(8 * k)
