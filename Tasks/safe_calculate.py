@@ -9,11 +9,11 @@ def safe_calculate(a, b, operation):
         elif operation == "divide":
             return a / b
         else:
-             raise ValueError("Unsupported operation")
+            raise ValueError("Unsupported operation")
     except ZeroDivisionError:
         return float('inf')
     except TypeError:
-         return
+        return "TypeError"
     except ValueError:
         return "Unsupported operation"
 
@@ -21,3 +21,5 @@ print(safe_calculate(10, 5, "divide"))
 print(safe_calculate(10, 0, "divide"))   
 print(safe_calculate(10, "5", "add"))     
 print(safe_calculate(10, 5, "mod"))  
+print(safe_calculate(10, 0, "ABC"))  
+
