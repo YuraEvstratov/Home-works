@@ -5,7 +5,7 @@
 
 from itertools import *
 count = 0
-word = "КОНФЕТА"
+word = "КОНФЕТА" 
 for i in product(word, repeat=5):
     if i.count("Е") == 2 and i[1] != "Ф":
         count += 1
