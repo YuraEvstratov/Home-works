@@ -1,5 +1,5 @@
 def f(i_1, i_2, m):
-    if i_1 + i_2 >= 77:
+    if i_1 + i_2 >= 77 :
         return m % 2 == 0
     if m == 0:
         return False
@@ -8,6 +8,6 @@ def f(i_1, i_2, m):
          f(i_1 * 2, i_2, m - 1),
          f(i_1, i_2 * 2, m - 1)]
     return any(h) if (m + 1) % 2 == 0 else all(h)
-print("19:", *[i for i in range(1, 77) if f(7, i, 2)])
-print("20:", *[i for i in range(1, 77) if f(7, i, 3) and not(f(7, i, 1))])
-print("21:", min([i for i in range(1, 77) if f(7, i, 4) and not(f(7, i, 2))]))
+#print("19:", min([i for i in range(1, 77) if f(8, i, 2)]))
+print("20:", *[i for i in range(1, 77) if f(8, i, 3) and not f(8, i , 1)])
+print("21:", *[i for i in range(1, 77) if f(8, i, 4) and not f(8, i , 2)])
