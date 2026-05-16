@@ -1,5 +1,5 @@
 def f(i_1, i_2, m):
-    if i_1 + i_2 >= 77 :
+    if i_1 + i_2 >= 79 :
         return m % 2 == 0
     if m == 0:
         return False
