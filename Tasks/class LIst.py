@@ -68,16 +68,39 @@ class List:
             current = current.next
         return current
     
-    def pop(self, data: int):
-        del_node = Node(data)
+
+    def removestart(self):
         current = self.head
-        while current != del_node:
-            value = current
-            current = current.next
-        value.next = current.next
+        self.head = current.next
+        self.size -= 1
+        return current
+
+
+    def pop(self):
+        current = self.tail
+        self.tail = current.prev
         self.size -= 1
         return current
     
+
+    def removeindex(self, index: int) -> Node:
+        if index > self.size or index < 0:
+            raise IndexError(f"Index {index} out of range [0, {self.size}]")
+        
+        if index == 0:
+            self.removestart()
+            return
+        
+        if index == self.size:
+            self.pop()
+            return
+        
+        current = self.__get_node(index)
+        current.prev.next = current.next
+        current.next.prev = current.prev
+        self.size -= 1
+        return current
+
 
     def print(self):
         current = self.head
@@ -89,4 +112,6 @@ l = List()
 for i in range(6):
     l.insert_index(i, i)
 l.print()
-
+e = l.remove_index(2)
+l.print()
+print(e.data)

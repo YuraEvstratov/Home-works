@@ -59,8 +59,9 @@ class List:
 
         self.size += 1
 
-    def get_head(self):
+    def get_head(self) -> Node:
         return self.head
+    
     def __get_node(self, index: int) -> Node:
         if index >= self.size or index < 0:
             return None
@@ -93,11 +94,12 @@ class Queue:
     def push(self, elem):
         self.list.append(elem)
 
-    # def pop(self):
-    #     self.list.pop(1)
+    def pop(self):
+        self.list.pop(1)
+        return self.list.get_head().data
 
     def peek(self):
-         return self.list.get_head()
+        return self.list.get_head().data
 
     def size(self):
         return self.list.size
@@ -108,6 +110,6 @@ l.push(132)
 l.push(67)
 l.push(6)
 l.push(9)
-# print(l.pop())
+print(l.pop())
 print(l.size())
 print(l.peek())
