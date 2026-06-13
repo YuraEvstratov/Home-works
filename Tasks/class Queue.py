@@ -70,10 +70,9 @@ class List:
             current = current.next
         return current
         
-    def pop(self, data: int):
-        del_node = Node(data)
+    def pop(self, index: int):
         current = self.head
-        while current != del_node:
+        for _ in range(index):
             value = current
             current = current.next
         value.next = current.next
