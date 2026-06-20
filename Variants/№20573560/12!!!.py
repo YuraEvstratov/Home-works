@@ -5,7 +5,7 @@ def trinity(n):
         s = str(n % 3) + s
         n = n // 3
     return s
-for n in range(100000000, 0, -1):
+for n in range(100000, 0, -1):
     x = trinity(n)
     q = ""
     for i in range(len(x)):

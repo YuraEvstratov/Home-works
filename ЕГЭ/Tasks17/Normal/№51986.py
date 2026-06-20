@@ -1,0 +1,15 @@
+text = open("/Users/yura/Downloads/17-14.txt")
+nums = [int(i) for i in text]
+k = 0
+z = 0 
+max_summ = 0
+for i in range(len(nums)):
+    if abs(nums[i]) % 10 == 5:
+        z = min(z, nums[i])
+for j in range(len(nums) - 1):
+    if (((abs(nums[j]) % 10 == 5 and nums[j] < nums[j + 1]) or
+         (nums[j] > nums[j + 1] and abs(nums[j + 1]) % 10 == 5)) and 
+         (nums[j] ** 2 + nums[j + 1] ** 2) < z ** 2):
+        k += 1
+        max_summ = max(max_summ, nums[j] ** 2 + nums[j + 1] ** 2)
+print(k, max_summ)
