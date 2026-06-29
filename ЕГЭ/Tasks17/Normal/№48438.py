@@ -13,3 +13,4 @@ for j in range(len(nums) - 1):
         k += 1
         max_summ = max(max_summ, nums[j] ** 2 + nums[j + 1] ** 2)
 print(k, max_summ)
+print(-47 % 10)
