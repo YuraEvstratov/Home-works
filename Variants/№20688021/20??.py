@@ -1,5 +1,5 @@
 l = []
-for n in range(10000, 1000000000):
+for n in range(10000, 2 ** 29):
     x = bin(n)[2:]
     z = str(n)
     chet = 0

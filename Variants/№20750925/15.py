@@ -1,8 +1,8 @@
 from turtle import *
-k = 25
-left(90)
+k = 30
 tracer(0)
 screensize(10000, 10000)
+left(90)
 for _ in range(2):
     forward(24 * k)
     right(90)
@@ -21,5 +21,5 @@ penup()
 for x in range(-k, k):
     for y in range(-k, k):
         goto(x * k, y * k)
-        dot(5)
+        dot(3)
 done()
