@@ -1,11 +1,19 @@
-text = open("/Users/yura/Downloads/24-2.txt").readline()
-
-max_count = 0
-for i in range(len(text)):
-    for n in range(i + max_count, len(text)):
-        c = text[i: n + 1]
-        if c.count("A") == 1 and c.count("B") == 1:
-            max_count = max(max_count, len(c))
-        elif c.count("A") > 1 and c.count("B") > 1:
-            break
-print(max_count)
+text = open("/Users/yura/Downloads/24-3.txt").read()
+left = 0
+cnt_A = 0
+cnt_B = 0
+max_size = 0
+for right in range(len(text)):
+    if text[right]  == "A":
+         cnt_A += 1
+    if text[right]  == "B":
+         cnt_B += 1
+    while cnt_A > 1 or cnt_B > 1:  
+        if text[left] == "A":
+             cnt_A -=1
+        if text[left] == "B":
+             cnt_B -=1
+        left += 1
+    if cnt_A == 1 and cnt_B == 1:
+         max_size = max(max_size, right - left + 1)
+print(max_size)
