@@ -1,0 +1,8 @@
+from itertools import *
+matrix = "256 15 4 356 1246 145".split()
+graf = "АБ АВ БВ БГ ВГ ВД ГД ДЕ".split()
+print("1 2 3 4 5 6")
+for i in permutations("АБВГДЕ"):
+    if all(str(i.index(m2) + 1) in matrix[i.index(m1)] for m1, m2 in graf):
+        print(*i)
+        break
