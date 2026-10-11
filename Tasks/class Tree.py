@@ -24,44 +24,50 @@ class Tree:
                 return
             elif current.key > data:
                 if current.left is None:
-                    current.prev = current
+                    new_node.prev = current
                     current.left = new_node
                     return
                 current = current.left
 
             else: 
                 if current.right is None:
-                    current.prev = current
+                    new_node.prev = current
                     current.right = new_node
                     return
                 current = current.right
 
-    def delete(self, data: int) -> int:
-        current = self.__get_current(data)
+    def delete(self, data: int) -> bool:
+        current = self._get_node(data)
+        if current is None:
+            return False
+        if current.count > 1:
+            current.count -= 1
+            return True
         if current.left is None and current.right is None:
-            if current.prev is None:
-                self.root = None
-            else:
-                if current.key < current.prev.key:
-                    current.prev.left = None
-                else:
-                    current.prev.right = None
-        elif not current.left is None:
-            if current.left.right is None:
-                if current.key < current.prev.key:
-                    current.prev.left = current.left
-                else:
-                    current.prev.right = current.left
-            else:
-                if current.key < current.prev.key:
-                    current.prev.left = current.left.right
-                else:
-                    current.prev.right = current.left.right
-        
+            self._transplant(current, None)
+        elif current.left is not None or current.right is not None:
+            value = current.left if current.left is not None else current.right
+            self._transplant(current, value)
+        else:
+            node = current.right
+            while node.left is not None:
+                node = node.left
+            current.key = node.key
+            current.count = node.count
+            self._transplant(node, node.right)
 
-                
+                   
 
-        
+    def _transplant(self, u, v):
+        if u.prev is None:
+            self.root = v
+        elif u is u.prev.left:
+            u.prev.left = v
+        else:
+            u.prev.right = v
+        if v is not None:
+            v.prev = u.prev
+
             
     def find(self, data: int) -> int:
         current = self.root
@@ -74,7 +80,7 @@ class Tree:
                 current = current.left
         return 0
 
-    def __get_current(self, data: int) -> int:
+    def _get_node(self, data: int) -> Node:
             current = self.root
             while current is not None:
                 if current.key == data:
@@ -83,11 +89,11 @@ class Tree:
                     current = current.right
                 else:
                     current = current.left
-            return 0
+            return None
     
     def print_forward(self, current):
         list = []
-        
+
         
     def print_reversed(self):
         current = self.root
@@ -123,9 +129,11 @@ l.insert(2)
 l.insert(9)
 l.insert(78)
 l.print_LMR()
-print("")
-l.print_forward()
-print("")
-l.print_reversed()
-            
+l.delete(9)
+# print("")
+# l.print_forward()
+# print("")
+# l.print_reversed()
+
+l.print_LMR()          
         
